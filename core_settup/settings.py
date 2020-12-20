@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-import django_heroku
+
 import os
 from os import environ
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ['secret_key']
+SECRET_KEY = environ['secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -103,7 +104,6 @@ DATABASES = {
             'username': 'dean',
             'password': 'mnbvcxz',
             'authMechanism': 'SCRAM-SHA-1',
-
         }
     }
 }
@@ -149,9 +149,9 @@ STATIC_URL = '/static/'
 
 #Cross Origin Header
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8081',
-)
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:8081',
+# )
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -164,4 +164,3 @@ REST_FRAMEWORK = {
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
-
