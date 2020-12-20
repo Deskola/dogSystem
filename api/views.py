@@ -52,6 +52,15 @@ class DetailOfUser(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()    
     serializer_class = serializers.UserSerializer
 
+#User oparations
+class ListOfMedicationForAll(generics.ListCreateAPIView):
+	queryset = models.MedicationForAll.objects.all()
+	serializer_class = serializers.MedicationForAllSerializer    
+
+class DetailOfMedicationForAll(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.MedicationForAll.objects.all()    
+    serializer_class = serializers.MedicationForAllSerializer
+
 
 
     

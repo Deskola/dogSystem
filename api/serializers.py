@@ -41,6 +41,20 @@ class MedicationSerializer(serializers.ModelSerializer):
 			'medication_date',
 			'operation_type',
 			'details',
+			'cost',			
+		)
+
+#Medication serialize for Json
+class MedicationForAllSerializer(serializers.ModelSerializer):
+	class Meta:
+		#model to serialize
+		model = models.MedicationForAll
+		#a tuple of field names to be included in the serialization
+		fields = (
+			'id',			
+			'medication_date',
+			'operation_type',
+			'details',
 			'cost',
 			
 		)

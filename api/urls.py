@@ -5,6 +5,8 @@ from . import views
 urlpatterns = [
     path('dogs', views.ListOfDogs.as_view()),
     path('dogs/<int:pk>/', views.DetailOfDog.as_view()),
+    path('medicationforall', views.ListOfMedicationForAll.as_view()),
+    path('medicationforall/<int:pk>/', views.DetailOfMedicationForAll.as_view()),
     path('medications', views.ListOfMedication.as_view()),
     path('medications/<int:pk>/', views.DetailOfMedication.as_view()),
     path('feeds', views.ListOfFeed.as_view()),

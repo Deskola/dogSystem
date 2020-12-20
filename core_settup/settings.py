@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import django_heroku
 import os
+from os import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vip-l6f$dvd8m0l2(eikt4*^=v&r0_us+j!d=s^l9=88-)fzy-'
+SECRET_KEY = ['secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
+
+SITE_ID=1
 
 
 # Application definition
@@ -94,9 +97,14 @@ WSGI_APPLICATION = 'core_settup.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'dog_api_db',
-        'HOST': '127.0.0.1',
-        'PORT': '27017'
+        "CLIENT": {
+            'name': 'dogstuff',
+            'host': 'mongodb+srv://dean:mnbvcxz@cluster0.bwynb.mongodb.net/dogstuff?retryWrites=true&w=majority',
+            'username': 'dean',
+            'password': 'mnbvcxz',
+            'authMechanism': 'SCRAM-SHA-1',
+
+        }
     }
 }
 
@@ -153,4 +161,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 
 }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 

@@ -18,6 +18,13 @@ class Medication(models.Model):
 	details = models.CharField(max_length=100, blank=False, default='')
 	cost = models.CharField(max_length=70, blank=False, default='')
 
+#Medication details
+class MedicationForAll(models.Model):	
+	medication_date = models.DateField(blank=False, default='')
+	operation_type = models.CharField(max_length=70, blank=False, default='')
+	details = models.CharField(max_length=200, blank=False, default='')
+	cost = models.CharField(max_length=70, blank=False, default='')
+
 #Feeds managment
 class Feed(models.Model):
 	user =  models.ForeignKey(User, related_name="feeds", on_delete=models.CASCADE)
